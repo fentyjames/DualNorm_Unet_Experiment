@@ -14,7 +14,8 @@ from F6_CROSSVAL import CrossVal
 from F7_TEST2 import test_model
 from F8_IMAGES import get_images
 #from F23_DULANORM_UNET import DualNorm_Unet
-from F23_DULANORM_UNET_V3 import DualNorm_Unet
+from F23_DULANORM_UNET_V1 import DualNorm_Unet
+#from F23_DULANORM_UNET_V2 import DualNorm_Unet
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
