@@ -1,0 +1,795 @@
+Date:2023-08-03
+Ending Time:3:20
+Starting Time:1:22
+Total Training Time in seconds: 7093.8905316929995
+Data set size:1778
+Fold number:4
+Fold number:4
+Number of validation images:133
+Number of training images:1201
+Mini batch size:16
+Type of initialization:xavier_uniform_
+Test accuracy:[0.9928948283195496]
+Learning rate:0.0001
+Model version:DualNorm_Unet
+Optimizer type:Adam
+Total number of epochs:100
+Training loss function:BCEWithLogitsLoss
+Validation loss function:BCEWithLogitsLoss
+Accuracy function:Jaccard
+Channel index:RGBs
+Transfer:notr
+Model Summary:
+DualNorm_Unet(
+  (inc): InConv(
+    (nonlinear_layer): ReLU(inplace=True)
+    (conv): Sequential(
+      (0): Conv2d(3, 32, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (down1): Down(
+    (nonlinear_layer): ReLU(inplace=True)
+    (maxpool_conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (down2): Down(
+    (nonlinear_layer): ReLU(inplace=True)
+    (maxpool_conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): Conv2d(64, 128, kernel_size=(2, 2), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (down3): Down(
+    (nonlinear_layer): ReLU(inplace=True)
+    (maxpool_conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): Conv2d(128, 256, kernel_size=(2, 2), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (down4): Down(
+    (nonlinear_layer): ReLU(inplace=True)
+    (maxpool_conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): Conv2d(256, 512, kernel_size=(2, 2), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (mid): Mid(
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (up1): Up(
+    (nonlinear_layer): ReLU(inplace=True)
+    (up): TransConv(
+      (nonlinear_layer): ReLU(inplace=True)
+      (up): Sequential(
+        (0): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU(inplace=True)
+        (2): ConvTranspose2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+      )
+    )
+    (conv): Sequential(
+      (0): Conv2d(512, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (up2): Up(
+    (nonlinear_layer): ReLU(inplace=True)
+    (up): TransConv(
+      (nonlinear_layer): ReLU(inplace=True)
+      (up): Sequential(
+        (0): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU(inplace=True)
+        (2): ConvTranspose2d(256, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+      )
+    )
+    (conv): Sequential(
+      (0): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (up3): Up(
+    (nonlinear_layer): ReLU(inplace=True)
+    (up): TransConv(
+      (nonlinear_layer): ReLU(inplace=True)
+      (up): Sequential(
+        (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU(inplace=True)
+        (2): ConvTranspose2d(128, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+      )
+    )
+    (conv): Sequential(
+      (0): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (up4): Up(
+    (nonlinear_layer): ReLU(inplace=True)
+    (up): TransConv(
+      (nonlinear_layer): ReLU(inplace=True)
+      (up): Sequential(
+        (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): ReLU(inplace=True)
+        (2): ConvTranspose2d(64, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+      )
+    )
+    (conv): Sequential(
+      (0): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (block): ResBlock(
+      (nonlinear_layer): ReLU(inplace=True)
+      (norm_0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (norm_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (outc): OutConv(
+    (nonlinear_layer): ReLU(inplace=True)
+    (conv): Sequential(
+      (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): ReLU(inplace=True)
+      (2): Conv2d(32, 1, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (outsig): Sigmoid()
+)
+Epoch: 0 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 1, 'verbose': False, '_step_count': 2, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.4798144588344975
+Training accuracy:0.5431674718856812
+Validation loss:0.46192997362878585
+Validation accuracy:0.5751628875732422
+Epoch: 1 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 2, 'verbose': False, '_step_count': 3, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.46094403690413427
+Training accuracy:0.5986176133155823
+Validation loss:0.45152466495831806
+Validation accuracy:0.6077294945716858
+Epoch: 2 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 3, 'verbose': False, '_step_count': 4, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.4538347783841585
+Training accuracy:0.6199362874031067
+Validation loss:0.4447181423505147
+Validation accuracy:0.6292901635169983
+Epoch: 3 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 4, 'verbose': False, '_step_count': 5, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.447648144474155
+Training accuracy:0.6384707093238831
+Validation loss:0.43905649913681877
+Validation accuracy:0.6473698616027832
+Epoch: 4 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 5, 'verbose': False, '_step_count': 6, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.44201264569633886
+Training accuracy:0.6550856828689575
+Validation loss:0.4353114598327213
+Validation accuracy:0.6591141819953918
+Epoch: 5 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 6, 'verbose': False, '_step_count': 7, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.43654937963736684
+Training accuracy:0.6711083054542542
+Validation loss:0.4320642583900028
+Validation accuracy:0.6690108180046082
+Epoch: 6 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 7, 'verbose': False, '_step_count': 8, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.4309501573443413
+Training accuracy:0.6870473623275757
+Validation loss:0.4276222421063317
+Validation accuracy:0.6824623346328735
+Epoch: 7 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 8, 'verbose': False, '_step_count': 9, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.42436703804292175
+Training accuracy:0.7040926814079285
+Validation loss:0.42033717698521084
+Validation accuracy:0.704811155796051
+Epoch: 8 LR: [0.0001]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 9, 'verbose': False, '_step_count': 10, '_get_lr_called_within_step': False, '_last_lr': [0.0001]}
+Training loss:0.41332941894468506
+Training accuracy:0.7153434157371521
+Validation loss:0.3882715834511651
+Validation accuracy:0.7756332159042358
+Epoch: 9 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 10, 'verbose': False, '_step_count': 11, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.39276372602111415
+Training accuracy:0.7667359709739685
+Validation loss:0.38044607308175826
+Validation accuracy:0.8009331226348877
+Epoch: 10 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 11, 'verbose': False, '_step_count': 12, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.3835907045163606
+Training accuracy:0.7965928912162781
+Validation loss:0.37233640750249225
+Validation accuracy:0.8274360299110413
+Epoch: 11 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 12, 'verbose': False, '_step_count': 13, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.3765040392938413
+Training accuracy:0.8191034197807312
+Validation loss:0.3648551238907708
+Validation accuracy:0.8524603247642517
+Epoch: 12 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 13, 'verbose': False, '_step_count': 14, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.37117441233835724
+Training accuracy:0.8363996148109436
+Validation loss:0.3610268135865529
+Validation accuracy:0.8649166822433472
+Epoch: 13 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 14, 'verbose': False, '_step_count': 15, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.367315584499585
+Training accuracy:0.8494115471839905
+Validation loss:0.3611274196041955
+Validation accuracy:0.8632321357727051
+Epoch: 14 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 15, 'verbose': False, '_step_count': 16, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.36312950598566157
+Training accuracy:0.8627429604530334
+Validation loss:0.3611031671365102
+Validation accuracy:0.8630896210670471
+Epoch: 15 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 16, 'verbose': False, '_step_count': 17, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.35976177532421916
+Training accuracy:0.8739194273948669
+Validation loss:0.3596828083197276
+Validation accuracy:0.8679605722427368
+Epoch: 16 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 17, 'verbose': False, '_step_count': 18, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.35680508456732096
+Training accuracy:0.8836362361907959
+Validation loss:0.35785464114613
+Validation accuracy:0.8738765120506287
+Epoch: 17 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 18, 'verbose': False, '_step_count': 19, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.3543484144304928
+Training accuracy:0.8921801447868347
+Validation loss:0.3491804036829207
+Validation accuracy:0.9013137221336365
+Epoch: 18 LR: [9e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 19, 'verbose': False, '_step_count': 20, '_get_lr_called_within_step': False, '_last_lr': [9e-05]}
+Training loss:0.3518725202271813
+Training accuracy:0.9005124568939209
+Validation loss:0.3460305200682746
+Validation accuracy:0.9111328125
+Epoch: 19 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 20, 'verbose': False, '_step_count': 21, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.3510251586374484
+Training accuracy:0.9046699404716492
+Validation loss:0.3451190193494161
+Validation accuracy:0.9151071310043335
+Epoch: 20 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 21, 'verbose': False, '_step_count': 22, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.34797266674669164
+Training accuracy:0.9131161570549011
+Validation loss:0.3459274901284112
+Validation accuracy:0.9123716950416565
+Epoch: 21 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 22, 'verbose': False, '_step_count': 23, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.3460465206911689
+Training accuracy:0.9189307689666748
+Validation loss:0.3434554504023658
+Validation accuracy:0.9206088185310364
+Epoch: 22 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 23, 'verbose': False, '_step_count': 24, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.34427231001226527
+Training accuracy:0.9246657490730286
+Validation loss:0.34219925271140206
+Validation accuracy:0.9249848127365112
+Epoch: 23 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 24, 'verbose': False, '_step_count': 25, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.34277179366663885
+Training accuracy:0.9297414422035217
+Validation loss:0.34020418922106427
+Validation accuracy:0.9316329956054688
+Epoch: 24 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 25, 'verbose': False, '_step_count': 26, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.3414050583776675
+Training accuracy:0.9343213438987732
+Validation loss:0.33890960613886517
+Validation accuracy:0.9361496567726135
+Epoch: 25 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 26, 'verbose': False, '_step_count': 27, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.3402535299721517
+Training accuracy:0.9383211731910706
+Validation loss:0.33540451857778764
+Validation accuracy:0.9472687244415283
+Epoch: 26 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 27, 'verbose': False, '_step_count': 28, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.3392178749567584
+Training accuracy:0.9418002367019653
+Validation loss:0.3350352976057265
+Validation accuracy:0.9487146139144897
+Epoch: 27 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 28, 'verbose': False, '_step_count': 29, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.33850505830425964
+Training accuracy:0.9443845152854919
+Validation loss:0.33467089136441547
+Validation accuracy:0.9500933289527893
+Epoch: 28 LR: [8.1e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 29, 'verbose': False, '_step_count': 30, '_get_lr_called_within_step': False, '_last_lr': [8.1e-05]}
+Training loss:0.33735112492975433
+Training accuracy:0.9480880498886108
+Validation loss:0.33332835303412545
+Validation accuracy:0.9546046853065491
+Epoch: 29 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 30, 'verbose': False, '_step_count': 31, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.3363669663667679
+Training accuracy:0.9514185190200806
+Validation loss:0.3322301374541389
+Validation accuracy:0.9585791826248169
+Epoch: 30 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 31, 'verbose': False, '_step_count': 32, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.33577968140966014
+Training accuracy:0.9536097049713135
+Validation loss:0.3319151997566223
+Validation accuracy:0.9595896005630493
+Epoch: 31 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 32, 'verbose': False, '_step_count': 33, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.33493791599022715
+Training accuracy:0.9563037753105164
+Validation loss:0.331537041399214
+Validation accuracy:0.9611349105834961
+Epoch: 32 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 33, 'verbose': False, '_step_count': 34, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.33419149917991536
+Training accuracy:0.9587975740432739
+Validation loss:0.3310171067714691
+Validation accuracy:0.9626958966255188
+Epoch: 33 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 34, 'verbose': False, '_step_count': 35, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.3336781647644545
+Training accuracy:0.9606487154960632
+Validation loss:0.3306557635466258
+Validation accuracy:0.9641037583351135
+Epoch: 34 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 35, 'verbose': False, '_step_count': 36, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.3332685432151744
+Training accuracy:0.9620822072029114
+Validation loss:0.33005093534787494
+Validation accuracy:0.9662615656852722
+Epoch: 35 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 36, 'verbose': False, '_step_count': 37, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.3326767067375936
+Training accuracy:0.9640263915061951
+Validation loss:0.3296569519572788
+Validation accuracy:0.967714786529541
+Epoch: 36 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 37, 'verbose': False, '_step_count': 38, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.3321301513596585
+Training accuracy:0.9658896923065186
+Validation loss:0.3292776346206665
+Validation accuracy:0.9689569473266602
+Epoch: 37 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 38, 'verbose': False, '_step_count': 39, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.331795150904279
+Training accuracy:0.9671322703361511
+Validation loss:0.32914713356229996
+Validation accuracy:0.9694510698318481
+Epoch: 38 LR: [7.290000000000001e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 39, 'verbose': False, '_step_count': 40, '_get_lr_called_within_step': False, '_last_lr': [7.290000000000001e-05]}
+Training loss:0.3334145867510846
+Training accuracy:0.9634411334991455
+Validation loss:0.3291122482882606
+Validation accuracy:0.9700658917427063
+Epoch: 39 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 40, 'verbose': False, '_step_count': 41, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.33185491044270365
+Training accuracy:0.9676130414009094
+Validation loss:0.3282036715083652
+Validation accuracy:0.9730327725410461
+Epoch: 40 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 41, 'verbose': False, '_step_count': 42, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.33109979841269943
+Training accuracy:0.9699738025665283
+Validation loss:0.32761648959583706
+Validation accuracy:0.9747340083122253
+Epoch: 41 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 42, 'verbose': False, '_step_count': 43, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.3305307701230049
+Training accuracy:0.9717931747436523
+Validation loss:0.32785290479660034
+Validation accuracy:0.9738515019416809
+Epoch: 42 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 43, 'verbose': False, '_step_count': 44, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.33024424824275467
+Training accuracy:0.9727677702903748
+Validation loss:0.3272920416461097
+Validation accuracy:0.9760394096374512
+Epoch: 43 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 44, 'verbose': False, '_step_count': 45, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.3298738755677876
+Training accuracy:0.9739851951599121
+Validation loss:0.3270423147413466
+Validation accuracy:0.9769626259803772
+Epoch: 44 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 45, 'verbose': False, '_step_count': 46, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.32955294886701986
+Training accuracy:0.9751027226448059
+Validation loss:0.32714202337794834
+Validation accuracy:0.9764978289604187
+Epoch: 45 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 46, 'verbose': False, '_step_count': 47, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.3296200511486907
+Training accuracy:0.9750136733055115
+Validation loss:0.32677850789493984
+Validation accuracy:0.9780824780464172
+Epoch: 46 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 47, 'verbose': False, '_step_count': 48, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.3291118164595805
+Training accuracy:0.97664475440979
+Validation loss:0.32646913992034066
+Validation accuracy:0.9790443778038025
+Epoch: 47 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 48, 'verbose': False, '_step_count': 49, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.3288380315429286
+Training accuracy:0.9775798320770264
+Validation loss:0.3262889054086473
+Validation accuracy:0.9797150492668152
+Epoch: 48 LR: [6.561000000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 49, 'verbose': False, '_step_count': 50, '_get_lr_called_within_step': False, '_last_lr': [6.561000000000002e-05]}
+Training loss:0.3286060502654628
+Training accuracy:0.9783855676651001
+Validation loss:0.32614942722850376
+Validation accuracy:0.9802061319351196
+Epoch: 49 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 50, 'verbose': False, '_step_count': 51, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.32840467832590403
+Training accuracy:0.9791014790534973
+Validation loss:0.32587604721387226
+Validation accuracy:0.9812232255935669
+Epoch: 50 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 51, 'verbose': False, '_step_count': 52, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.3282366198928733
+Training accuracy:0.9797434210777283
+Validation loss:0.3259756664435069
+Validation accuracy:0.9807572364807129
+Epoch: 51 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 52, 'verbose': False, '_step_count': 53, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.3288220014227064
+Training accuracy:0.978278636932373
+Validation loss:0.3261783950858646
+Validation accuracy:0.9802559614181519
+Epoch: 52 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 53, 'verbose': False, '_step_count': 54, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.32817843164268296
+Training accuracy:0.9800970554351807
+Validation loss:0.32550352811813354
+Validation accuracy:0.9825272560119629
+Epoch: 53 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 54, 'verbose': False, '_step_count': 55, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.3278632748283838
+Training accuracy:0.9810964465141296
+Validation loss:0.3254484170013004
+Validation accuracy:0.9828754663467407
+Epoch: 54 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 55, 'verbose': False, '_step_count': 56, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.32767053379824285
+Training accuracy:0.9817596673965454
+Validation loss:0.32532485326131183
+Validation accuracy:0.9832191467285156
+Epoch: 55 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 56, 'verbose': False, '_step_count': 57, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.3274793836631273
+Training accuracy:0.9824023842811584
+Validation loss:0.32515337069829303
+Validation accuracy:0.9838486909866333
+Epoch: 56 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 57, 'verbose': False, '_step_count': 58, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.3273236516274904
+Training accuracy:0.982944905757904
+Validation loss:0.325022064977222
+Validation accuracy:0.9843166470527649
+Epoch: 57 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 58, 'verbose': False, '_step_count': 59, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.3271684638763729
+Training accuracy:0.98348468542099
+Validation loss:0.32488745119836593
+Validation accuracy:0.9848188757896423
+Epoch: 58 LR: [5.904900000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 59, 'verbose': False, '_step_count': 60, '_get_lr_called_within_step': False, '_last_lr': [5.904900000000002e-05]}
+Training loss:0.32702833767
+Training accuracy:0.9839702844619751
+Validation loss:0.3248342176278432
+Validation accuracy:0.9850302338600159
+Epoch: 59 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 60, 'verbose': False, '_step_count': 61, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.32690254324360896
+Training accuracy:0.9844150543212891
+Validation loss:0.32468536496162415
+Validation accuracy:0.9855588674545288
+Epoch: 60 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 61, 'verbose': False, '_step_count': 62, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.32678899247395365
+Training accuracy:0.98481285572052
+Validation loss:0.3246404661072625
+Validation accuracy:0.9857312440872192
+Epoch: 61 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 62, 'verbose': False, '_step_count': 63, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.3266788156409013
+Training accuracy:0.9852038025856018
+Validation loss:0.32449449433220756
+Validation accuracy:0.9862655997276306
+Epoch: 62 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 63, 'verbose': False, '_step_count': 64, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.32658266001626063
+Training accuracy:0.985556960105896
+Validation loss:0.32448723249965244
+Validation accuracy:0.9862673878669739
+Epoch: 63 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 64, 'verbose': False, '_step_count': 65, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.32652339731392105
+Training accuracy:0.9858559370040894
+Validation loss:0.32430430584483677
+Validation accuracy:0.9869861006736755
+Epoch: 64 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 65, 'verbose': False, '_step_count': 66, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.3264127828572926
+Training accuracy:0.9861823320388794
+Validation loss:0.3242795202467177
+Validation accuracy:0.9870553612709045
+Epoch: 65 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 66, 'verbose': False, '_step_count': 67, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.3262921493304403
+Training accuracy:0.9865807890892029
+Validation loss:0.324219243394004
+Validation accuracy:0.9873077869415283
+Epoch: 66 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 67, 'verbose': False, '_step_count': 68, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.32619870689354447
+Training accuracy:0.9869071841239929
+Validation loss:0.3241058091322581
+Validation accuracy:0.9876934885978699
+Epoch: 67 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 68, 'verbose': False, '_step_count': 69, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.32610659850271123
+Training accuracy:0.987227737903595
+Validation loss:0.3240548372268677
+Validation accuracy:0.987896203994751
+Epoch: 68 LR: [5.314410000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 69, 'verbose': False, '_step_count': 70, '_get_lr_called_within_step': False, '_last_lr': [5.314410000000002e-05]}
+Training loss:0.3260210066249496
+Training accuracy:0.9875292181968689
+Validation loss:0.3239862455262078
+Validation accuracy:0.9881575703620911
+Epoch: 69 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 70, 'verbose': False, '_step_count': 71, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.3259411520863834
+Training accuracy:0.9878113269805908
+Validation loss:0.32392121354738873
+Validation accuracy:0.9883902072906494
+Epoch: 70 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 71, 'verbose': False, '_step_count': 72, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.32586996806295293
+Training accuracy:0.988065779209137
+Validation loss:0.32386932770411175
+Validation accuracy:0.988578200340271
+Epoch: 71 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 72, 'verbose': False, '_step_count': 73, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.3257992663665822
+Training accuracy:0.9883142709732056
+Validation loss:0.32379650076230365
+Validation accuracy:0.988848865032196
+Epoch: 72 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 73, 'verbose': False, '_step_count': 74, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.32573265739177404
+Training accuracy:0.9885520339012146
+Validation loss:0.3237608207596673
+Validation accuracy:0.9889851212501526
+Epoch: 73 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 74, 'verbose': False, '_step_count': 75, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.32566682327734797
+Training accuracy:0.9887834787368774
+Validation loss:0.32370397448539734
+Validation accuracy:0.9892095923423767
+Epoch: 74 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 75, 'verbose': False, '_step_count': 76, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.32560618535468455
+Training accuracy:0.9890047907829285
+Validation loss:0.3236800564659966
+Validation accuracy:0.9892905950546265
+Epoch: 75 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 76, 'verbose': False, '_step_count': 77, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.3255436016540778
+Training accuracy:0.9892258644104004
+Validation loss:0.32360517978668213
+Validation accuracy:0.9895990490913391
+Epoch: 76 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 77, 'verbose': False, '_step_count': 78, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.32549110917668594
+Training accuracy:0.9894276857376099
+Validation loss:0.323630733622445
+Validation accuracy:0.9894505143165588
+Epoch: 77 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 78, 'verbose': False, '_step_count': 79, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.32682131034763234
+Training accuracy:0.9859690070152283
+Validation loss:0.32833624217245316
+Validation accuracy:0.9751629829406738
+Epoch: 78 LR: [4.782969000000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 79, 'verbose': False, '_step_count': 80, '_get_lr_called_within_step': False, '_last_lr': [4.782969000000002e-05]}
+Training loss:0.3267110378334397
+Training accuracy:0.9862356185913086
+Validation loss:0.32339510983890957
+Validation accuracy:0.9903427958488464
+Epoch: 79 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 80, 'verbose': False, '_step_count': 81, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.325551752197115
+Training accuracy:0.9893898963928223
+Validation loss:0.3233771887090471
+Validation accuracy:0.9903692007064819
+Epoch: 80 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 81, 'verbose': False, '_step_count': 82, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3254070564320213
+Training accuracy:0.9898324012756348
+Validation loss:0.32335252894295585
+Validation accuracy:0.9904285073280334
+Epoch: 81 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 82, 'verbose': False, '_step_count': 83, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3253122732827538
+Training accuracy:0.9901278018951416
+Validation loss:0.3233030570877923
+Validation accuracy:0.9906027317047119
+Epoch: 82 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 83, 'verbose': False, '_step_count': 84, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3252449047408606
+Training accuracy:0.9903504252433777
+Validation loss:0.3232545488410526
+Validation accuracy:0.9907736778259277
+Epoch: 83 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 84, 'verbose': False, '_step_count': 85, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3251875850715135
+Training accuracy:0.9905427098274231
+Validation loss:0.32320762674013775
+Validation accuracy:0.9909412860870361
+Epoch: 84 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 85, 'verbose': False, '_step_count': 86, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3251337950166903
+Training accuracy:0.990726113319397
+Validation loss:0.3231625556945801
+Validation accuracy:0.9911020994186401
+Epoch: 85 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 86, 'verbose': False, '_step_count': 87, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3250853023246715
+Training accuracy:0.9908936619758606
+Validation loss:0.32312079932954574
+Validation accuracy:0.9912501573562622
+Epoch: 86 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 87, 'verbose': False, '_step_count': 88, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3250395353687437
+Training accuracy:0.9910534024238586
+Validation loss:0.32307793696721393
+Validation accuracy:0.9914035797119141
+Epoch: 87 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 88, 'verbose': False, '_step_count': 89, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.324996327491183
+Training accuracy:0.9912048578262329
+Validation loss:0.3230385449197557
+Validation accuracy:0.9915438890457153
+Epoch: 88 LR: [4.304672100000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 89, 'verbose': False, '_step_count': 90, '_get_lr_called_within_step': False, '_last_lr': [4.304672100000002e-05]}
+Training loss:0.3249548603045313
+Training accuracy:0.9913510680198669
+Validation loss:0.3230004178153144
+Validation accuracy:0.991679847240448
+Epoch: 89 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 90, 'verbose': False, '_step_count': 91, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3249155090827691
+Training accuracy:0.991489827632904
+Validation loss:0.3229800893200768
+Validation accuracy:0.9917536377906799
+Epoch: 90 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 91, 'verbose': False, '_step_count': 92, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3248801768610352
+Training accuracy:0.9916139245033264
+Validation loss:0.3229467769463857
+Validation accuracy:0.9918734431266785
+Epoch: 91 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 92, 'verbose': False, '_step_count': 93, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3248457700798386
+Training accuracy:0.9917353987693787
+Validation loss:0.32291872633828056
+Validation accuracy:0.9919746518135071
+Epoch: 92 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 93, 'verbose': False, '_step_count': 94, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3248123208943166
+Training accuracy:0.9918538928031921
+Validation loss:0.3228876193364461
+Validation accuracy:0.9920871257781982
+Epoch: 93 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 94, 'verbose': False, '_step_count': 95, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.32477934070323644
+Training accuracy:0.9919706583023071
+Validation loss:0.32286064161194694
+Validation accuracy:0.9921842217445374
+Epoch: 94 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 95, 'verbose': False, '_step_count': 96, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3247467997042756
+Training accuracy:0.9920870065689087
+Validation loss:0.3228350049919552
+Validation accuracy:0.9922778010368347
+Epoch: 95 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 96, 'verbose': False, '_step_count': 97, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3247131356283238
+Training accuracy:0.9922082424163818
+Validation loss:0.32281561030281913
+Validation accuracy:0.9923459887504578
+Epoch: 96 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 97, 'verbose': False, '_step_count': 98, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3246784763116586
+Training accuracy:0.9923366904258728
+Validation loss:0.3227953281667497
+Validation accuracy:0.9924219250679016
+Epoch: 97 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 98, 'verbose': False, '_step_count': 99, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3246445373484963
+Training accuracy:0.9924582242965698
+Validation loss:0.32277951969040763
+Validation accuracy:0.9924772381782532
+Epoch: 98 LR: [3.874204890000002e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 99, 'verbose': False, '_step_count': 100, '_get_lr_called_within_step': False, '_last_lr': [3.874204890000002e-05]}
+Training loss:0.3246124712260146
+Training accuracy:0.9925726652145386
+Validation loss:0.3227486146820916
+Validation accuracy:0.9925949573516846
+Epoch: 99 LR: [3.4867844010000016e-05]
+{'step_size': 10, 'gamma': 0.9, 'base_lrs': [0.0001], 'last_epoch': 100, 'verbose': False, '_step_count': 101, '_get_lr_called_within_step': False, '_last_lr': [3.4867844010000016e-05]}
+Training loss:0.3245821136393045
+Training accuracy:0.9926797151565552
+Validation loss:0.32274529669019913
+Validation accuracy:0.9926096200942993
